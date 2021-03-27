@@ -1,0 +1,20 @@
+D:\C#\NQuanHau1\NQuanHau1\bin\Debug\NQuanHau1.exe.config
+D:\C#\NQuanHau1\NQuanHau1\bin\Debug\NQuanHau1.exe
+D:\C#\NQuanHau1\NQuanHau1\bin\Debug\NQuanHau1.pdb
+D:\C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csprojAssemblyReference.cache
+D:\C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.Form1.resources
+D:\C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.Properties.Resources.resources
+D:\C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csproj.GenerateResource.cache
+D:\C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csproj.CoreCompileInputs.cache
+D:\C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.exe
+D:\C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.pdb
+D:\Source Code C#\NQuanHau1\NQuanHau1\bin\Debug\NQuanHau1.exe.config
+D:\Source Code C#\NQuanHau1\NQuanHau1\bin\Debug\NQuanHau1.exe
+D:\Source Code C#\NQuanHau1\NQuanHau1\bin\Debug\NQuanHau1.pdb
+D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csprojAssemblyReference.cache
+D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.Form1.resources
+D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.Properties.Resources.resources
+D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csproj.GenerateResource.cache
+D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csproj.CoreCompileInputs.cache
+D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.exe
+D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.pdb
