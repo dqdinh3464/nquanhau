@@ -39,6 +39,7 @@ namespace NQuanHau1
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnStart = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
             this.btnResetSetting = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.numberNQueen = new System.Windows.Forms.NumericUpDown();
@@ -283,12 +284,16 @@ namespace NQuanHau1
             // 
             // flowLayoutPanel4
             // 
+            this.flowLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel4.Controls.Add(this.btnStart);
+            this.flowLayoutPanel4.Controls.Add(this.btnDone);
             this.flowLayoutPanel4.Controls.Add(this.btnResetSetting);
             this.flowLayoutPanel4.Controls.Add(this.btnExit);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(7, 426);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 426);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(319, 69);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(320, 130);
             this.flowLayoutPanel4.TabIndex = 8;
             // 
             // btnStart
@@ -297,19 +302,31 @@ namespace NQuanHau1
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnStart.Location = new System.Drawing.Point(3, 3);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(100, 60);
+            this.btnStart.Size = new System.Drawing.Size(140, 60);
             this.btnStart.TabIndex = 4;
             this.btnStart.Text = "Chạy";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // btnDone
+            // 
+            this.btnDone.Enabled = false;
+            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnDone.Location = new System.Drawing.Point(149, 3);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(140, 60);
+            this.btnDone.TabIndex = 7;
+            this.btnDone.Text = "Hoàn thành";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btndone_Click);
+            // 
             // btnResetSetting
             // 
             this.btnResetSetting.Enabled = false;
             this.btnResetSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnResetSetting.Location = new System.Drawing.Point(109, 3);
+            this.btnResetSetting.Location = new System.Drawing.Point(3, 69);
             this.btnResetSetting.Name = "btnResetSetting";
-            this.btnResetSetting.Size = new System.Drawing.Size(100, 60);
+            this.btnResetSetting.Size = new System.Drawing.Size(140, 60);
             this.btnResetSetting.TabIndex = 3;
             this.btnResetSetting.Text = "Thiết lập lại";
             this.btnResetSetting.UseVisualStyleBackColor = true;
@@ -318,9 +335,9 @@ namespace NQuanHau1
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnExit.Location = new System.Drawing.Point(215, 3);
+            this.btnExit.Location = new System.Drawing.Point(149, 69);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 60);
+            this.btnExit.Size = new System.Drawing.Size(140, 60);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -330,12 +347,12 @@ namespace NQuanHau1
             // 
             this.numberNQueen.Location = new System.Drawing.Point(7, 13);
             this.numberNQueen.Maximum = new decimal(new int[] {
-            8,
+            15,
             0,
             0,
             0});
             this.numberNQueen.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -363,6 +380,7 @@ namespace NQuanHau1
             this.rtxtAnswer.AutoWordSelection = true;
             this.rtxtAnswer.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.rtxtAnswer.EnableAutoDragDrop = true;
+            this.rtxtAnswer.Enabled = false;
             this.rtxtAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.rtxtAnswer.Location = new System.Drawing.Point(6, 28);
             this.rtxtAnswer.Name = "rtxtAnswer";
@@ -370,6 +388,8 @@ namespace NQuanHau1
             this.rtxtAnswer.Size = new System.Drawing.Size(306, 301);
             this.rtxtAnswer.TabIndex = 0;
             this.rtxtAnswer.Text = "";
+            this.rtxtAnswer.WordWrap = false;
+            this.rtxtAnswer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.showValue);
             // 
             // btnInputNQueen
             // 
@@ -495,7 +515,6 @@ namespace NQuanHau1
             // 
             // pB11
             // 
-            this.pB11.Image = global::NQuanHau1.Properties.Resources.White_C_3;
             this.pB11.Location = new System.Drawing.Point(1, 1);
             this.pB11.Margin = new System.Windows.Forms.Padding(1);
             this.pB11.Name = "pB11";
@@ -1630,6 +1649,7 @@ namespace NQuanHau1
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
         private PictureBox pictureBox7;
+        private Button btnDone;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,9 @@ namespace NQuanHau1
     {
         int n = 8;
         int so_loi_giai = 0;
-        int[] hang = new int[20];
-
+        int[] cot = new int[100];
+        bool done = false;
+        int[,] result = new int[100, 100];
         public Form1()
         {
             InitializeComponent();
@@ -63,6 +65,8 @@ namespace NQuanHau1
 
         private void showLabel()
         {
+            lbX2.Visible = true;
+            lbY2.Visible = true;
             lbX3.Visible = true;
             lbY3.Visible = true;
             lbX4.Visible = true;
@@ -159,6 +163,11 @@ namespace NQuanHau1
         {
             for (int i = 8; i > n; i--)
             {
+                if (i == 2)
+                {
+                    lbX2.Visible = false;
+                    lbY2.Visible = false;
+                }
                 if (i == 3)
                 {
                     lbX3.Visible = false;
@@ -773,14 +782,14 @@ namespace NQuanHau1
 
         private void changeFlowPanelSize()
         {
-            if (n == 8)
+            if (n >= 8)
             {
                 fpnlChess.Size = new Size(538, 538);
                 return;
             }
-            else if (n == 3)
+            else if (n <= 3)
             {
-                fpnlChess.Size = new Size((540 * n / 8) + 1, (540 * n / 8) + 1);
+                fpnlChess.Size = new Size((538 * n / 8) + n, (538 * n / 8) + n);
                 return;
             }
 
@@ -796,18 +805,22 @@ namespace NQuanHau1
 
         private void btnInputNQueen_Click(object sender, EventArgs e)
         {
-            showLabel();
-            showPictureBox();
             n = (int)numberNQueen.Value;
-            changeFlowPanelSize();
-            hiddenBox();
-            hiddenLabel();
+
+            if (n <= 8)
+            {
+                showLabel();
+                showPictureBox();
+                changeFlowPanelSize();
+                hiddenBox();
+                hiddenLabel();
+            }
+
 
             btnInputNQueen.Enabled = false;
             numberNQueen.Enabled = false;
 
             btnStart.Enabled = true;
-            //btnReChoose.Enabled = true;
             btnResetSetting.Enabled = true;
         }
 
@@ -818,23 +831,32 @@ namespace NQuanHau1
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            btnStart.Enabled = false;
-            removeAllQueen();
-            rtxtAnswer.Text = "";
-            so_loi_giai = 0;
-
-            new Thread(() =>
+            Thread t = new Thread(new ThreadStart(() =>
             {
+                btnDone.Enabled = true;
+                removeAllQueen();
+                rtxtAnswer.Text = "";
+                so_loi_giai = 0;
+
                 xepHau(1);
                 MessageBox.Show("Đã tìm được tất cả " + so_loi_giai.ToString() + " lời giải");
-            }).Start();
+                rtxtAnswer.Enabled = true;
+                btnDone.Enabled = false;
+            }));
+
+            t.IsBackground = true;
+
+            t.Start();
+
+            btnStart.Enabled = false;
+            btnDone.Enabled = true;
         }
 
         private bool Ok(int x, int y)
         {
             //kiểm tra cách đặt có thỏa mãn không
             for (int i = 1; i < x; i++)
-                if (hang[i] == y || Math.Abs(i - x) == Math.Abs(hang[i] - y))
+                if (cot[i] == y || Math.Abs(i - x) == Math.Abs(cot[i] - y))
                     return false;
             //Nếu kiểm tra hết các trường hợp vẫn không sai thì trả về true
             return true;
@@ -845,7 +867,11 @@ namespace NQuanHau1
             so_loi_giai++;
 
             for (int i = 1; i <= n; i++)
-                rtxtAnswer.Text = rtxtAnswer.Text + "[" + i.ToString() + ", " + hang[i].ToString() + "] ";
+            {
+                result[so_loi_giai-1, i-1] = cot[i];
+                rtxtAnswer.Text = rtxtAnswer.Text + "[" + i.ToString() + ", " + cot[i].ToString() + "] ";
+            }
+                
             rtxtAnswer.Text = rtxtAnswer.Text + "\n";
 
             grBAnswer.Text = "Số lời giải: " + so_loi_giai.ToString();
@@ -854,29 +880,44 @@ namespace NQuanHau1
         {
             for (int j = 1; j <= n; j++)
             {
-                removeQueen(i, j - 1);
-                setQueen(i, j);
-                Thread.Sleep(1000/trackBarSpeed.Value);
-                
+                if (!done)
+                {
+                    removeQueen(i, j - 1);
+                    setQueen(i, j);
+                    Thread.Sleep(1000 / trackBarSpeed.Value);
+                }
+
                 // thử đặt quân hậu vào các cột từ 1 đến n
                 if (Ok(i, j))
                 {
                     //nếu cách đặt này thỏa mãn thì lưu lại vị trí
-                    hang[i] = j;
+                    cot[i] = j;
                     //nếu đặt xong quân hậu thứ n thì xuất ra một kết quả
                     if (i == n)
                     {
                         Xuat();
-                        removeQueen(i, j);
+                        if (!done)
+                        {
+                            removeQueen(i, j);
+                        }
                     }
-                    else  xepHau(i + 1);
+                    else xepHau(i + 1);
                 }
                 else
                 {
-                    removeQueen(i, j);
+                    if (!done)
+                    {
+                        removeQueen(i, j);
+                    }
                 }
 
-                if (j == n) removeQueen(i, j);
+                if (j == n)
+                {
+                    if (!done)
+                    {
+                        removeQueen(i, j);
+                    }
+                }
             }
         }
 
@@ -1467,25 +1508,32 @@ namespace NQuanHau1
         {
             Application.Restart();
             Environment.Exit(0);
+        }
 
-            n = 8;
-            trackBarSpeed.Value = 5;
-            lbSpeed.Text = "Tốc độ: " + trackBarSpeed.Value;
-
-            grBAnswer.Text = "Số lời giải: ";
-
-            numberNQueen.Value = n;
-            rtxtAnswer.Text = "";
-
-            showLabel();
-            showAllPictureBox();
-
-            btnInputNQueen.Enabled = true;
-            numberNQueen.Enabled = true;
-
+        private void btndone_Click(object sender, EventArgs e)
+        {
+            done = true;
+            btnDone.Enabled = false;
             btnStart.Enabled = false;
-            //btnReChoose.Enabled = false;
-            btnResetSetting.Enabled = false;
+        }
+
+        private void showValue(object sender, MouseEventArgs e)
+        {
+            Thread t = new Thread(() =>
+            {
+                if (n <= 8)
+                {
+                    removeAllQueen();
+                    int first_char_line = rtxtAnswer.GetFirstCharIndexOfCurrentLine();
+                    int line = rtxtAnswer.GetLineFromCharIndex(first_char_line);
+                    for(int j = 0, i = 1; j < n; i++, j++)
+                    {
+                        setQueen(i, result[line, j]);
+                    }
+                }
+            });
+            t.IsBackground = true;
+            t.Start();
         }
     }
 }

@@ -18,3 +18,13 @@ D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csproj.GenerateResourc
 D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.csproj.CoreCompileInputs.cache
 D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.exe
 D:\Source Code C#\NQuanHau1\NQuanHau1\obj\Debug\NQuanHau1.pdb
+D:\C#\nquanhau\NQuanHau1\bin\Debug\NQuanHau1.exe.config
+D:\C#\nquanhau\NQuanHau1\bin\Debug\NQuanHau1.exe
+D:\C#\nquanhau\NQuanHau1\bin\Debug\NQuanHau1.pdb
+D:\C#\nquanhau\NQuanHau1\obj\Debug\NQuanHau1.csprojAssemblyReference.cache
+D:\C#\nquanhau\NQuanHau1\obj\Debug\NQuanHau1.Form1.resources
+D:\C#\nquanhau\NQuanHau1\obj\Debug\NQuanHau1.Properties.Resources.resources
+D:\C#\nquanhau\NQuanHau1\obj\Debug\NQuanHau1.csproj.GenerateResource.cache
+D:\C#\nquanhau\NQuanHau1\obj\Debug\NQuanHau1.csproj.CoreCompileInputs.cache
+D:\C#\nquanhau\NQuanHau1\obj\Debug\NQuanHau1.exe
+D:\C#\nquanhau\NQuanHau1\obj\Debug\NQuanHau1.pdb
